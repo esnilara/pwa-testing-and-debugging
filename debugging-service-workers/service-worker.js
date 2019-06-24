@@ -42,6 +42,21 @@ self.addEventListener('fetch', function(event) {
   );
 });
 
+self.addEventListener('push', function(event) {
+  let title = 'Yay a message!';
+  let body = 'We have received a push message.';
+  let icon = '/images/smiley.svg';
+  let tag = 'simple-push-example-tag';
+
+  event.waitUntil(
+    self.registration.showNotification(title, {
+      body,
+      icon,
+      tag
+    })
+  );
+});
+
 self.addEventListener('activate', function(event) {
   console.log('Finally active. Ready to start serving');
 });
